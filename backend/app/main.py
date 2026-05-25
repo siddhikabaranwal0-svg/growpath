@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import get_settings
-from app.api.routers import auth, users, skills, paths
+from app.api.routers import auth, users, skills, paths, recommendations
 
 settings = get_settings()
 
@@ -25,6 +25,7 @@ app.include_router(auth.router, prefix=f"{settings.API_V1_STR}/auth", tags=["aut
 app.include_router(users.router, prefix=f"{settings.API_V1_STR}/users", tags=["users"])
 app.include_router(skills.router, prefix=f"{settings.API_V1_STR}/skills", tags=["skills"])
 app.include_router(paths.router, prefix=f"{settings.API_V1_STR}/paths", tags=["paths"])
+app.include_router(recommendations.router, prefix=f"{settings.API_V1_STR}/recommendations", tags=["recommendations"])
 
 
 @app.get("/")
